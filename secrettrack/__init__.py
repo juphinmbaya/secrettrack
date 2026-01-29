@@ -1,7 +1,7 @@
 """
-Secrets Hunter - Professional tool for detecting exposed secrets in code.
+Secrets Track - Professional tool for detecting exposed secrets in code.
 """
 
 __version__ = "1.0.0"
-__author__ = "SecretsHunter Team"
+__author__ = "Juphin Mbaya"
 __license__ = "MIT"

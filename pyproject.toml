@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "secrettrack"
-version = "1.0.0"
+version = "1.0.2"
 description = "A professional tool for detecting exposed secrets in code and configuration files"
 readme = "README.md"
 authors = [
@@ -40,5 +40,5 @@ dev = [
 secrettrack = "secrettrack.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/secrettrack"
-BugTracker = "https://github.com/yourusername/secrettrack/issues"
+Homepage = "https://github.com/juphinmbaya/secrettrack"
+BugTracker = "https://github.com/juphinmbaya/secrettrack/issues"

@@ -26,5 +26,3 @@ secrettrack/report/json.py
 secrettrack/scanner/__init__.py
 secrettrack/scanner/filesystem.py
 secrettrack/scanner/git_history.py
-tests/test_detectors.py
-tests/test_scanner.py

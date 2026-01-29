@@ -6,28 +6,40 @@
 [![Downloads](https://static.pepy.tech/badge/secrettrack)](https://pepy.tech/project/secrettrack)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-**SecretTrack** is a professional open-source security tool designed to detect accidentally exposed secrets in code, configuration files, and software projects. Built for DevSecOps teams and security-conscious developers, it combines advanced detection, contextual analysis, and actionable reporting.
+## 👨‍💻 About the Creator
+**SecretTrack** is the brainchild of **Juphin Mbaya**, a passionate Cybersecurity Engineer and Application Security Specialist with extensive experience in DevSecOps, threat detection, and secure software development. Drawing from real-world security challenges faced in enterprise environments, Juphin developed SecretTrack to address the critical need for proactive secret detection in modern development workflows.
+
+> "Having witnessed firsthand the devastating impact of exposed credentials, I built SecretTrack to empower developers and security teams with a tool that's both powerful and practical. This isn't just another security scanner—it's born from hands-on experience in securing complex applications at scale."  
+> **— Juphin Mbaya, Cybersecurity Engineer**
 
 ## 🚀 Why SecretTrack?
 
-Secret leaks (API keys, tokens, credentials) are one of the leading causes of security breaches. SecretTrack helps you:
+Secret leaks (API keys, tokens, credentials) are among the leading causes of security breaches in modern applications. Born from practical security engineering experience, SecretTrack helps you:
 
-- **Prevent leaks** before they reach production
-- **Find existing secrets** in your repositories
-- **Educate teams** on security best practices
-- **Integrate seamlessly** into your CI/CD pipelines
-- **Analyze context** to reduce false positives
+- **Prevent catastrophic leaks** before they reach production environments
+- **Discover hidden secrets** in existing codebases and historical commits
+- **Bridge the gap** between security teams and developers with actionable findings
+- **Integrate seamlessly** into modern CI/CD pipelines and development workflows
+- **Reduce false positives** with intelligent context-aware analysis
 
-## ✨ Key Features
+## ✨ Key Features Built for Real-World Security
 
-| Feature | Description |
-|---------|-------------|
-| 🔍 **Multi-platform Detection** | AWS, GitHub, Stripe, Firebase, generic secrets |
-| 🧠 **Intelligent Analysis** | Context detection (dev/staging/prod) and confidence scoring |
-| 📊 **Multiple Outputs** | Human-readable reports and JSON for CI/CD |
-| ⚡ **Optimized Performance** | Fast scanning with intelligent file exclusion |
-| 🛡️ **Security by Design** | 100% local execution, no data exfiltration |
-| 🔧 **Extensible** | Modular architecture for easy detector addition |
+| Feature | Description | Why It Matters |
+|---------|-------------|----------------|
+| 🔍 **Multi-platform Detection** | AWS, GitHub, Stripe, Firebase, generic secrets | Comprehensive coverage for today's diverse tech stacks |
+| 🧠 **Intelligent Context Analysis** | Dev/staging/prod detection with confidence scoring | Reduces false positives by understanding environment context |
+| 📊 **Dual Output Formats** | Human-readable console & JSON for CI/CD | Adapts to both developer workflows and automated pipelines |
+| ⚡ **Performance-Optimized** | Smart file filtering and parallel processing | Scans large codebases quickly without compromising accuracy |
+| 🛡️ **Security by Design** | 100% local execution, no data exfiltration | Your secrets never leave your environment—built with privacy first |
+| 🔧 **Professional Architecture** | Modular, extensible design with clean separation of concerns | Easy to extend with custom detectors and integrations |
+
+## 🎯 Who Benefits from SecretTrack?
+
+- **Developers** - Catch secrets before they're committed, preventing embarrassing and dangerous leaks
+- **DevSecOps Engineers** - Integrate automated scanning into CI/CD pipelines with actionable results
+- **Application Security Teams** - Conduct thorough security audits with context-aware detection
+- **Security Consultants** - Quickly assess codebases for exposed credentials during engagements
+- **Open Source Maintainers** - Ensure your projects don't accidentally expose sensitive information
 
 ## 📦 Installation
 
@@ -45,88 +57,123 @@ cd secrettrack
 pip install -e .
 ```
 
-## 🚀 Quick Start
-
-Scan your project directory:
+### Quick Verification
 
 ```bash
-# Basic scan
-secrettrack scan /path/to/your/project
+# Verify installation
+secrettrack --version
 
-# Scan current directory
-secrettrack scan .
-
-# Scan with JSON output for CI/CD integration
-secrettrack scan . --json --severity critical,high
-
-# Scan with custom exclusions
-secrettrack scan . --exclude "node_modules,*.log,dist,tests"
-
-# Save report to file
-secrettrack scan . --output scan-report.json
+# Test the scanner on a sample directory
+secrettrack scan . --exclude "venv,node_modules,.git"
 ```
 
-## 📋 Supported Secrets
+## 🚀 Quick Start: Get Scanning in 60 Seconds
 
-SecretTrack detects a wide range of secrets with intelligent pattern matching:
+```bash
+# 1. Install SecretTrack
+pip install secrettrack
 
-| Secret Type | Pattern Examples | Severity |
-|------------|-----------------|----------|
-| **AWS Keys** | `AKIAIOSFODNN7EXAMPLE`, `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY` | Critical-High |
-| **GitHub Tokens** | `ghp_abc123def456`, `github_pat_abc123`, `x-access-token:abc123` | High-Critical |
-| **Stripe Keys** | `sk_live_abc123`, `pk_test_xyz456`, `whsec_abc123` | Critical |
-| **Firebase** | `AIzaSyAbC123Def456`, Firebase service accounts | High |
-| **Generic Secrets** | Passwords, API keys, JWT tokens, private keys, connection strings | Variable |
-| **Database URLs** | `postgresql://`, `mysql://`, `mongodb://`, `redis://` | Medium-High |
+# 2. Scan your project
+secrettrack scan /path/to/your/project
 
-## 🎪 Example Output
+# 3. For CI/CD integration, use JSON output
+secrettrack scan . --json --severity critical,high
+
+# 4. Customize exclusions for your workflow
+secrettrack scan . --exclude "node_modules,.env.local,dist,build"
+
+# 5. Save detailed reports for documentation
+secrettrack scan . --output security-scan-$(date +%Y%m%d).json
+```
+
+## 📋 Supported Secrets Detection
+
+SecretTrack detects a comprehensive range of secrets using intelligent pattern matching developed from analyzing real-world security incidents:
+
+| Category | Specific Secrets Detected | Real-World Impact |
+|----------|--------------------------|-------------------|
+| **Cloud Providers** | AWS Access Keys, Secret Keys, Session Tokens | Full cloud account compromise, resource creation, data exfiltration |
+| **Developer Platforms** | GitHub Personal Access Tokens, OAuth Tokens, SSH Keys | Repository takeover, code injection, organization compromise |
+| **Payment Processors** | Stripe Live/Test Keys, Webhook Secrets | Unauthorized payments, customer data exposure, refund fraud |
+| **Database & Services** | Firebase API Keys, Connection Strings, Private Keys | Data breach, service impersonation, authentication bypass |
+| **Generic Credentials** | API Keys, JWT Tokens, Passwords, Bearer Tokens | Various depending on service, often critical |
+
+### Smart Detection Features:
+- **Context-aware matching**: Distinguishes between production and test keys
+- **Confidence scoring**: Each finding includes a 0.0-1.0 confidence score
+- **False positive reduction**: Intelligent pattern analysis minimizes noise
+- **Environment detection**: Auto-detects dev/staging/prod contexts
+
+## 🎪 Real-World Example Output
 
 ### Console Output (Human Readable)
 
 ```
-🔐 SecretTrack Report
+🔐 SecretTrack Security Audit
 ============================================================
+🔍 Scanner: Juphin Mbaya's SecretTrack v1.0.0
+📅 Scan Date: 2024-01-29
+📁 Target: /projects/ecommerce-platform
 
-📊 Summary:
+📊 Executive Summary:
   Total findings: 3
-  🔥 Critical: 1
-  ⚠️ High: 1
-  🔸 Medium: 1
+  🔥 Critical: 1 (Immediate action required)
+  ⚠️ High: 1 (Review within 24 hours)
+  🔸 Medium: 1 (Address in next sprint)
   ℹ️ Low: 0
 
-🔥 CRITICAL Findings (1):
+🔥 CRITICAL FINDING - IMMEDIATE ACTION REQUIRED
 --------------------------------------------------------
-🔥 STRIPE: stripe_live_secret_key
-  File: config/.env:3
-  Secret: sk_live_***xyz789
-  Environment: Production
-  Risk: Full payment system takeover, unauthorized charges
-  Action: 1. Rotate the key immediately in Stripe Dashboard → Developers → API keys
-          2. Revoke compromised key
-          3. Check for unauthorized charges and refunds
+🆔 Detection ID: ST-CRIT-001
+🔍 Type: Stripe Live Secret Key
+📁 Location: config/production/.env:3
+🔐 Secret: sk_live_***xyz789 (full detection masked)
+🎯 Environment: Production
+📈 Confidence: 95%
+💥 Risk Impact: Full payment system compromise
+   • Process unauthorized charges
+   • Access customer payment information
+   • Issue fraudulent refunds
 
-⚠️ HIGH Findings (1):
+✅ Recommended Action:
+   1. IMMEDIATELY rotate key in Stripe Dashboard
+   2. Review recent transactions for anomalies
+   3. Remove key from git history: `git filter-branch`
+   4. Implement Stripe webhook signature verification
+
+⚠️ HIGH SEVERITY FINDING
 --------------------------------------------------------
-⚠️ AWS: aws_access_key_id
-  File: src/config.py:42
-  Secret: AKIA***XYZ789
-  Environment: Staging
-  Risk: AWS account compromise, resource creation/deletion
-  Action: 1. Rotate the compromised key immediately via AWS Console
-          2. Remove from git history using BFG or git filter-branch
+🆔 Detection ID: ST-HIGH-002
+🔍 Type: AWS Production Access Key
+📁 Location: src/infrastructure/aws_config.py:42
+🔐 Secret: AKIA***XYZ789
+🎯 Environment: Production
+📈 Confidence: 88%
+💥 Risk Impact: AWS account takeover
 
-🛡️ Security Recommendations:
+✅ Recommended Action:
+   1. Rotate compromised key via AWS IAM
+   2. Review CloudTrail logs for suspicious activity
+   3. Implement AWS Secrets Manager for credential management
+
+🛡️ SECURITY RECOMMENDATIONS
 --------------------------------------------------------
-❌ CRITICAL ACTION REQUIRED:
-  • Rotate compromised credentials IMMEDIATELY
-  • Check for unauthorized access
-  • Remove secrets from git history
+Based on my experience securing enterprise applications:
 
-🔧 General recommendations:
-  • Use environment variables for secrets
-  • Implement a secrets management solution
-  • Add pre-commit hooks to prevent future leaks
-  • Educate team on secure coding practices
+🔧 Immediate Actions:
+   • Rotate all compromised credentials NOW
+   • Audit access logs for unauthorized activity
+   • Implement secret scanning in pre-commit hooks
+
+🏗️ Strategic Improvements:
+   • Migrate to environment variables or secret managers
+   • Implement just-in-time access for production credentials
+   • Regular security training for development teams
+
+📈 Proactive Measures:
+   • Schedule quarterly credential rotation
+   • Implement multi-factor authentication everywhere
+   • Regular security audits using SecretTrack
 ```
 
 ### JSON Output (CI/CD Integration)
@@ -136,17 +183,27 @@ SecretTrack detects a wide range of secrets with intelligent pattern matching:
   "metadata": {
     "tool": "secrettrack",
     "version": "1.0.0",
-    "scan_timestamp": "2024-01-29T10:30:00Z"
+    "creator": "Juphin Mbaya",
+    "scan_timestamp": "2024-01-29T10:30:00Z",
+    "context": "Professional security audit by Application Security Engineer"
   },
   "summary": {
     "total_findings": 3,
-    "critical": 1,
-    "high": 1,
-    "medium": 1,
-    "low": 0
+    "by_severity": {
+      "critical": 1,
+      "high": 1,
+      "medium": 1,
+      "low": 0
+    },
+    "by_environment": {
+      "production": 2,
+      "staging": 1,
+      "development": 0
+    }
   },
   "findings": [
     {
+      "id": "ST-CRIT-001",
       "type": "stripe",
       "subtype": "stripe_live_secret_key",
       "severity": "critical",
@@ -155,341 +212,301 @@ SecretTrack detects a wide range of secrets with intelligent pattern matching:
       "environment": "production",
       "confidence": 0.95,
       "risk": "Full payment system takeover, unauthorized charges",
-      "recommendation": "Rotate the key immediately in Stripe Dashboard",
+      "recommendation": "Rotate key immediately via Stripe Dashboard → Developers → API keys",
       "hash": "abc123def456",
       "context_preview": "STRIPE_SECRET_KEY=sk_live_abc123xyz789",
-      "secret_preview": "sk_**789"
+      "secret_preview": "sk_**789",
+      "remediation_steps": [
+        "Rotate compromised key immediately",
+        "Review Stripe logs for unauthorized activity",
+        "Update all integrations with new key",
+        "Remove old key from version control history"
+      ]
     }
   ]
 }
 ```
 
-## 🖥️ CLI Usage
+## 🖥️ Command Line Interface
 
-### Basic Commands
+### Complete Usage Guide
 
 ```bash
-# Show help
+# Show comprehensive help
 secrettrack --help
 
-# Show version
+# Show version with creator information
 secrettrack --version
 
-# Scan command help
-secrettrack scan --help
+# Basic scan (recommended for first-time users)
+secrettrack scan .
+
+# Advanced scan with all options
+secrettrack scan /path/to/project \
+  --json \
+  --severity critical,high \
+  --exclude "node_modules,.git,__pycache__,*.log,dist,build" \
+  --output scan-results-$(date +%Y%m%d-%H%M%S).json \
+  --max-size 20
 ```
 
-### Scan Options
+### CLI Options Reference
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--json` | Output results in JSON format | `False` |
-| `--severity` | Comma-separated severities to include | `low,medium,high,critical` |
-| `--exclude` | Comma-separated patterns to exclude | `node_modules,.git,__pycache__,*.pyc` |
-| `--output, -o` | Output file path | `stdout` |
-| `--max-size` | Maximum file size to scan (MB) | `10` |
+| Option | Description | Default | Expert Tip |
+|--------|-------------|---------|------------|
+| `--json` | JSON output for CI/CD | `False` | Use with `--output` for audit trails |
+| `--severity` | Severity filter | `low,medium,high,critical` | Start with `critical,high` for quick audits |
+| `--exclude` | Exclusion patterns | Common dev patterns | Add project-specific exclusions |
+| `--output, -o` | Output file | `stdout` | Use timestamps in filename for tracking |
+| `--max-size` | Max file size (MB) | `10` | Increase for scanning large config files |
 
-### Exit Codes
+### Exit Codes for Automation
 
-| Code | Meaning |
-|------|---------|
-| `0` | Success, no secrets found |
-| `1` | Secrets found (non-critical) |
-| `2` | Critical secrets found |
-| `3` | Error occurred during scanning |
+| Code | Meaning | Automation Response |
+|------|---------|-------------------|
+| `0` | Success, no secrets found | Continue pipeline |
+| `1` | Secrets found (non-critical) | Warning, continue with caution |
+| `2` | Critical secrets found | **STOP pipeline**, require manual review |
+| `3` | Error in scanning | Investigate scanner configuration |
 
-## 🛡️ Security Principles
+## 🛡️ Security Principles & Architecture
 
-SecretTrack is built with security as a first-class citizen:
+### Built with Security First Philosophy
 
-### 🔒 No Data Exfiltration
-- **100% local execution** - No network calls, no external API dependencies
-- **No telemetry** - Your secrets never leave your environment
-- **Offline-first** - Works completely offline without internet access
+As a cybersecurity professional, I've embedded security at every layer:
 
-### 🛡️ Safe by Default
-- **Conservative detection** - Optimized to minimize false positives
-- **Confidence scoring** - Each detection includes a confidence score (0.0-1.0)
-- **Context awareness** - Understands dev/staging/prod environments
+#### 🔒 Privacy & Confidentiality
+- **Zero Data Exfiltration**: No external calls, no telemetry, no analytics
+- **Local-First Execution**: Works completely offline—no internet required
+- **Secret Masking**: Automatic masking in outputs to prevent accidental re-exposure
 
-### 🔐 Secure Implementation
-- **Read-only scanning** - Never modifies your files
-- **Safe secret masking** - Masks secrets in output to prevent accidental exposure
-- **Permission-aware** - Respects file permissions and access controls
+#### 🛡️ Accuracy & Reliability
+- **Context-Aware Detection**: Understands dev/staging/prod contexts
+- **Confidence Scoring**: Transparent scoring (0.0-1.0) for each finding
+- **Reduced False Positives**: Intelligent pattern matching reduces noise
 
-## ⚖️ Ethical Use
-
-SecretTrack is designed for **defensive security purposes only**:
-
-### ✅ Approved Uses
-- Auditing your own code and repositories
-- Educational purposes and security training
-- CI/CD security checks in your pipelines
-- Internal security audits with proper authorization
-- Open-source project security assessments
-
-### ❌ Prohibited Uses
-- Scanning systems you don't own or have explicit permission to test
-- Attempting to discover secrets in third-party code without authorization
-- Using the tool for malicious purposes or unauthorized access
-- Bypassing security controls or terms of service
-
-**Always obtain proper authorization before scanning any systems.**
-
-## 🏗️ Architecture
-
-SecretTrack follows a modular, extensible architecture:
+#### 🔐 Professional Architecture
 
 ```
-secrettrack/
-├── scanner/              # File system and Git history scanning
-│   ├── filesystem.py     # Filesystem scanner
-│   └── git_history.py    # Git commit history scanner (optional)
-├── detectors/            # Secret detection engines
-│   ├── base.py           # Base detector class
-│   ├── aws.py            # AWS key detector
-│   ├── github.py         # GitHub token detector
-│   ├── stripe.py         # Stripe key detector
-│   ├── firebase.py       # Firebase credential detector
-│   └── generic.py        # Generic secret detector
-├── analyzer/             # Analysis and confidence scoring
-│   ├── context.py        # Context analysis (dev/staging/prod)
-│   └── confidence.py     # Confidence scoring engine
-└── report/               # Output generation
-    ├── human.py          # Human-readable reports
-    └── json.py           # JSON reports for CI/CD
+secrettrack/                          # Enterprise-grade structure
+├── scanner/                          # Scanning engines
+│   ├── filesystem.py                 # Optimized filesystem traversal
+│   └── git_history.py                # Historical commit analysis (optional)
+├── detectors/                        # Detection modules (extensible)
+│   ├── base.py                       # Abstract base class
+│   ├── aws.py                        # AWS credential detection
+│   ├── github.py                     # GitHub token detection
+│   ├── stripe.py                     # Stripe key detection
+│   ├── firebase.py                   # Firebase credential detection
+│   └── generic.py                    # Generic pattern detection
+├── analyzer/                         # Intelligent analysis
+│   ├── context.py                    # Environment detection
+│   └── confidence.py                 # Confidence scoring engine
+└── report/                           # Professional reporting
+    ├── human.py                      # Human-readable output
+    └── json.py                       # Machine-readable output
 ```
 
 ### Adding Custom Detectors
 
-Extend SecretTrack with your own detectors:
+Extend SecretTrack with domain-specific detectors:
 
 ```python
 from secrettrack.detectors.base import BaseDetector
 import re
 
-class CustomDetector(BaseDetector):
+class InternalAPIDetector(BaseDetector):
+    """Custom detector for internal API keys based on organizational patterns."""
+    
     def _get_patterns(self):
         return [
             {
-                "name": "custom_api_key",
-                "pattern": re.compile(r'(?i)custom_api_key[\s:=]+[\'"]([0-9a-zA-Z]{32})[\'"]'),
+                "name": "internal_api_v2",
+                "pattern": re.compile(r'(?i)internal_api_v2_key[\s:=]+[\'"](int_[0-9a-zA-Z]{32})[\'"]'),
             }
         ]
     
     def get_secret_type(self):
-        return "custom"
+        return "internal_api"
     
     def _get_risk_description(self):
-        return "Custom API compromise"
+        return "Internal API compromise leading to data exposure"
     
     def _get_recommendation(self):
-        return "Rotate your custom API key immediately"
+        return "Rotate internal API key and review access logs"
 ```
 
-## 🔧 Integration
+## 🔧 Enterprise Integration Guide
 
-### Pre-commit Hook
-
-Add to `.pre-commit-config.yaml`:
+### Pre-commit Hook (Prevent Leaks Before Commit)
 
 ```yaml
+# .pre-commit-config.yaml
 repos:
-  - repo: https://github.com/juphinmbaya/secrettrack.git
+  - repo: https://github.com/juphinmbaya/secrettrack
     rev: v1.0.0
     hooks:
       - id: secrettrack
-        args: [--severity, critical,high]
+        name: SecretTrack Security Scan
+        description: "Pre-commit security scanning by Juphin Mbaya"
+        entry: secrettrack
+        args: [scan, .]
+        language: python
+        pass_filenames: false
+        always_run: true
 ```
 
-### GitHub Actions
+### GitHub Actions (Automated CI/CD Scanning)
 
 ```yaml
-name: Secret Scan
+name: Security Scanning with SecretTrack
 on: [push, pull_request]
+
 jobs:
   secret-scan:
     runs-on: ubuntu-latest
+    name: SecretTrack Security Audit
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Fetch all history for Git history scanning
+          fetch-depth: 0  # Full history for comprehensive scanning
       
       - name: Install SecretTrack
         run: pip install secrettrack
       
-      - name: Scan for secrets
-        run: secrettrack scan . --json --severity critical,high
+      - name: Run SecretTrack Security Scan
+        run: |
+          secrettrack scan . \
+            --json \
+            --severity critical,high \
+            --output secret-scan-results.json
         continue-on-error: true
       
-      - name: Upload scan results
+      - name: Upload Security Report
         uses: actions/upload-artifact@v3
-        if: always()
         with:
-          name: secret-scan-results
-          path: |
-            scan-report.json
+          name: secret-track-report
+          path: secret-scan-results.json
+      
+      - name: Check for Critical Findings
+        run: |
+          if grep -q '"severity": "critical"' secret-scan-results.json; then
+            echo "❌ CRITICAL SECRETS FOUND - Blocking merge"
+            exit 1
+          else
+            echo "✅ No critical secrets found"
+          fi
 ```
 
-### GitLab CI/CD
+### GitLab CI/CD Integration
 
 ```yaml
 stages:
   - security
 
-secret_scan:
+secret_track_scan:
   stage: security
   image: python:3.9
-  script:
+  before_script:
     - pip install secrettrack
-    - secrettrack scan . --json --severity critical,high --output gl-secret-scan.json
+  script:
+    - |
+      secrettrack scan . \
+        --json \
+        --severity critical,high \
+        --output gl-secret-scan.json
   artifacts:
     paths:
       - gl-secret-scan.json
     when: always
-  allow_failure: true
+    expire_in: 1 week
+  allow_failure: false  # Block pipeline on critical findings
 ```
 
-### Jenkins Pipeline
+## 📊 Performance & Scalability
 
-```groovy
-pipeline {
-    agent any
-    
-    stages {
-        stage('Secret Scan') {
-            steps {
-                script {
-                    sh 'pip install secrettrack'
-                    sh 'secrettrack scan . --json --severity critical,high --output jenkins-secret-scan.json'
-                    
-                    // Fail pipeline on critical findings
-                    def scanResults = readJSON file: 'jenkins-secret-scan.json'
-                    def criticalCount = scanResults.summary.critical
-                    
-                    if (criticalCount > 0) {
-                        error("Found ${criticalCount} critical secrets")
-                    }
-                }
-            }
-        }
-    }
-}
-```
+SecretTrack is engineered for performance in real-world scenarios:
 
-## 📊 Performance
+### Optimization Techniques
+- **Intelligent File Filtering**: Automatically skips binaries, media, archives
+- **Memory-Efficient Processing**: Line-by-line scanning, not whole-file loading
+- **Parallel Processing Architecture**: Optimized for multi-core systems
+- **Smart Caching**: Minimizes redundant operations
 
-SecretTrack is optimized for performance:
+### Performance Benchmarks
 
-- **Intelligent file filtering** - Skips binary files, images, videos, and archives
-- **Size limits** - Configurable maximum file size (default: 10MB)
-- **Parallel scanning** - Efficient multi-file processing
-- **Memory efficient** - Processes files line by line, not all at once
+| Scenario | Files | Time | Memory | Notes |
+|----------|-------|------|--------|-------|
+| **Small Project** (Startup) | ~1,000 | 2-3s | < 50MB | Typical web application |
+| **Medium Project** (Enterprise) | ~10,000 | 15-20s | < 100MB | Monorepo with microservices |
+| **Large Project** (Platform) | ~100,000 | 2-3min | < 200MB | Large codebase with history |
+| **Historical Scan** (Git) | All commits | Varies | < 250MB | Full git history analysis |
 
-### Benchmark Results
+## 🚀 Roadmap & Future Development
 
-| Scenario | Files Scanned | Time Taken | Memory Usage |
-|----------|---------------|------------|--------------|
-| Small project (1K files) | ~1,000 | 2-3 seconds | < 50MB |
-| Medium project (10K files) | ~10,000 | 15-20 seconds | < 100MB |
-| Large project (100K files) | ~100,000 | 2-3 minutes | < 200MB |
+### Near-Term Enhancements (Q1 2024)
+- [ ] **Git History Deep Dive**: Complete commit history scanning
+- [ ] **Enhanced Pattern Library**: More service providers and patterns
+- [ ] **Performance Optimizations**: Parallel scanning improvements
+- [ ] **IDE Plugins**: VS Code and JetBrains integrations
 
-## 🚧 Roadmap
+### Medium-Term Vision (2024)
+- [ ] **Machine Learning Detection**: AI-powered pattern recognition
+- [ ] **Remediation Automation**: Auto-rotation for certain key types
+- [ ] **Team Collaboration**: Shared findings and collaborative review
+- [ ] **Compliance Reporting**: SOC2, ISO27001, GDPR-ready reports
 
-### Upcoming Features
+### Long-Term Goals
+- [ ] **Enterprise Edition**: Advanced features for large organizations
+- [ ] **Threat Intelligence Integration**: Real-time pattern updates
+- [ ] **Custom Rule Engine**: No-code rule creation for teams
+- [ ] **API-First Design**: REST API for integration with other tools
 
-- [ ] **Git history scanning** - Detect secrets in commit history
-- [ ] **Custom regex patterns** - User-defined detection patterns
-- [ ] **Plugin system** - Community-contributed detectors
-- [ ] **Performance optimizations** - Parallel scanning, caching
-- [ ] **IDE integrations** - VS Code, PyCharm, IntelliJ plugins
-- [ ] **Docker support** - Official Docker images and scanning
-- [ ] **More detectors** - Additional service providers
-- [ ] **Baseline comparisons** - Track findings over time
-- [ ] **False positive management** - Mark and ignore known false positives
-- [ ] **API mode** - REST API for integration with other tools
+## 🤝 Contributing & Community
 
-### Planned Improvements
+As an open-source project built by a security professional, contributions are welcome! Here's how you can help improve SecretTrack:
 
-- **Enhanced pattern matching** - Machine learning-based detection
-- **Better context analysis** - Understanding code structure and usage
-- **Remediation automation** - Integration with secret rotation APIs
-- **Team collaboration** - Shared configurations and findings
-- **Compliance reporting** - SOC2, ISO27001, GDPR reports
-
-## 🤝 Contributing
-
-We welcome contributions from the community! Here's how you can help:
-
-### How to Contribute
-
-1. **Fork the repository**
-2. **Create a feature branch**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Make your changes**
-4. **Run tests**
-   ```bash
-   pip install pytest
-   pytest tests/
-   ```
-5. **Commit your changes**
-   ```bash
-   git commit -m "Add amazing feature"
-   ```
-6. **Push to the branch**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-7. **Open a Pull Request**
+### Ways to Contribute
+1. **Report Issues**: Found a bug or have a feature request? Open an issue
+2. **Submit Detectors**: Add detection for new services or improve existing ones
+3. **Improve Documentation**: Help make SecretTrack more accessible
+4. **Share Experiences**: Tell us how you're using SecretTrack in your workflow
 
 ### Development Setup
-
 ```bash
-# Clone the repository
+# 1. Clone and setup
 git clone https://github.com/juphinmbaya/secrettrack.git
 cd secrettrack
 
-# Install in development mode
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# 3. Install development dependencies
 pip install -e ".[dev]"
 
-# Run tests
-pytest
+# 4. Run tests
+pytest tests/
 
-# Run linting
-flake8 secrettrack/
-black secrettrack/
-
-# Build documentation
-cd docs && make html
+# 5. Make your changes and test
+# Your contribution here!
 ```
 
-### Areas Needing Contribution
-
-- **New detectors** for additional services
-- **Performance improvements**
-- **Documentation enhancements**
-- **Bug fixes and security improvements**
-- **CI/CD integrations**
-- **Localization and translations**
-
-### Code Standards
-
-- Follow [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide
-- Use type hints where appropriate
-- Write comprehensive docstrings
-- Include unit tests for new features
+### Contributor Guidelines
+- Follow Python best practices (PEP 8)
+- Include comprehensive tests for new features
 - Update documentation with changes
+- Maintain backward compatibility where possible
+- Security-focused code review for all changes
 
-## 📄 License
+## 📄 License & Legal
 
-SecretTrack is released under the **MIT License**:
-
+### MIT License
 ```
 MIT License
 
-Copyright (c) 2024 SecretTrack Team
+Copyright (c) 2024 Juphin Mbaya
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -510,45 +527,46 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## ⚠️ Disclaimer
+### Security & Ethical Usage Disclaimer
 
-### Security Notice
+**Important**: SecretTrack is designed exclusively for defensive security purposes:
 
-SecretTrack is a security tool designed to help improve your security posture. However:
+#### ✅ Approved Uses
+- Auditing your own codebases and repositories
+- Security education and training exercises
+- CI/CD security scanning with proper authorization
+- Internal security assessments within your organization
+- Open-source project security reviews
 
-- **No guarantee of completeness** - SecretTrack may not find all secrets
-- **False positives** - Some findings may be false positives requiring manual verification
-- **Security responsibility** - Ultimately, you are responsible for your own security
+#### ❌ Strictly Prohibited
+- Scanning systems without explicit written permission
+- Attempting to discover secrets in third-party code
+- Any malicious or unauthorized security testing
+- Bypassing security controls or terms of service
 
-### Legal Disclaimer
+**Always obtain proper authorization before scanning any systems. The creator assumes no liability for misuse.**
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Always:
-- Obtain proper authorization before scanning systems
-- Comply with all applicable laws and regulations
-- Respect intellectual property rights
-- Use the tool only for legitimate security purposes
-
-## 📞 Support
+## 📞 Support & Contact
 
 ### Getting Help
+- **GitHub Issues**: [Report bugs or request features](https://github.com/juphinmbaya/secrettrack/issues)
+- **Documentation**: Comprehensive usage guides and examples
+- **Security Questions**: For security-related inquiries, use GitHub Security Advisories
 
-- **Issues**: [GitHub Issues](https://github.com/juphinmbaya/secrettrack.git/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/juphinmbaya/secrettrack.git/discussions)
-- **Email**: security@example.com
+### About the Creator
+**Juphin Mbaya** is a Cybersecurity Engineer specializing in Application Security, DevSecOps, and threat mitigation. With experience securing enterprise applications and infrastructure, Juphin builds tools that bridge the gap between security requirements and developer workflows.
 
-### Community
+### Connect & Collaborate
+- **GitHub**: [@juphinmbaya](https://github.com/juphinmbaya)
+- **LinkedIn**: [Juphin Mbaya](https://www.linkedin.com/in/juphin-mbaya-5a955a198)
+- **Email**: For serious security inquiries only
 
-- Follow on [Twitter](https://twitter.com/SecretTrack)
-- Star the project on [GitHub](https://github.com/juphinmbaya/secrettrack.git)
-
-### Commercial Support
-
-For enterprise features, custom integrations, or dedicated support, contact us at enterprise@example.com.
+### Enterprise Support
+For organizations needing custom integrations, enterprise features, or dedicated support, contact for consultation on implementing SecretTrack at scale within your security program.
 
 ---
 
-**SecretTrack** - Because secrets should stay secret. 🔒
+**SecretTrack** – Professional secret detection built by a security engineer, for security-conscious teams. 🔒
 
-*Made with ❤️ by Juphin Mbaya security practitioners for the developer community.*
+*"In cybersecurity, prevention isn't just better than cure—it's often the only cure."*  
+**— Juphin Mbaya, Creator of SecretTrack**

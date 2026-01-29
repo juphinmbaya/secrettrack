@@ -4,8 +4,8 @@ from pathlib import Path
 from typing import List, Dict, Any, Optional, Pattern
 import hashlib
 
-from secretsfinder.analyzer.context import ContextAnalyzer
-from secretsfinder.analyzer.confidence import ConfidenceAnalyzer
+from secrettrack.analyzer.context import ContextAnalyzer
+from secrettrack.analyzer.confidence import ConfidenceAnalyzer
 
 
 class BaseDetector(ABC):
