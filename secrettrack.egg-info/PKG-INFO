@@ -1,0 +1,83 @@
+Metadata-Version: 2.4
+Name: secrettrack
+Version: 1.0.0
+Summary: A professional tool for detecting exposed secrets in code and configuration files
+Home-page: https://github.com/yourusername/secretshunter
+Author: SecretsHunter Team
+Author-email: Juphin Mbaya <juphinmbaya0@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/yourusername/secrettrack
+Project-URL: BugTracker, https://github.com/yourusername/secrettrack/issues
+Keywords: security,secrets,detection,devsecops,appsec
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Security
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: colorama>=0.4.6
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: black>=23.0; extra == "dev"
+Requires-Dist: flake8>=6.0; extra == "dev"
+Dynamic: license-file
+
+# 🔐 Secrets Hunter
+
+[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue)](https://python.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/yourusername/secretshunter/pulls)
+
+A professional, open-source tool for detecting exposed secrets in codebases, configuration files, and projects. Built for developers, AppSec teams, and DevSecOps practitioners.
+
+## 🎯 Why Secrets Hunter?
+
+Accidentally committing secrets (API keys, tokens, credentials) to version control is one of the most common security mistakes. Secrets Hunter helps you:
+
+- **Prevent leaks** before they happen
+- **Find existing secrets** in your codebase
+- **Educate teams** about security best practices
+- **Integrate seamlessly** into CI/CD pipelines
+
+## ✨ Features
+
+- **Comprehensive detection**: AWS, GitHub, Stripe, Firebase, and generic secrets
+- **Smart analysis**: Context-aware scanning with confidence scoring
+- **Multiple outputs**: Human-readable console output and JSON for CI/CD
+- **Security-focused**: 100% local execution, no data exfiltration
+- **Professional grade**: Built following security and Python best practices
+
+## 📦 Installation
+
+### Via pip (recommended)
+
+```bash
+pip install secretshunter
+
+From source
+
+```bash
+git clone https://github.com/yourusername/secretshunter.git
+cd secretshunter
+pip install -e .
+
+
+🚀 Quick Start
+
+Scan your project directory:
+
+bash
+secretshunter scan /path/to/your/project
+
+
+Scan with JSON output for CI/CD:
+
+bash
+secretshunter scan . --json --severity critical,high
